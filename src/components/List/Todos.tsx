@@ -14,23 +14,48 @@ interface TodoItemProps {
 }
 
 const TodosBox = styled.div`
+  min-width: 320px;
+  width: 500px;
+`;
+
+const TodoItemBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
   margin-top: 10px;
+  border: solid gray 1px;
+  border-radius: 8px;
+`;
+
+const TodoInput = styled.input`
+  padding: 10px 20px;
+  border: solid gray 1px;
+  border-radius: 6px;
+  width: 72%;
 `;
 
 const TodoItem: React.FC<TodoItemProps> = ({ todo, onToggle, onRemove }) => {
   return (
-    <div>
+    <TodoItemBox>
       <input
         type="checkbox"
         onClick={() => onToggle(todo.id)}
         checked={todo.done}
         readOnly={true}
+        style={{ marginRight: '10px' }}
       />
-      <span style={{ textDecoration: todo.done ? 'line-through' : 'none' }}>
+      <span
+        style={{
+          textDecoration: todo.done ? 'line-through' : 'none',
+          overflow: 'hidden',
+          wordBreak: 'break-all',
+        }}
+      >
         {todo.text}
       </span>
       <button onClick={() => onRemove(todo.id)}>Delete</button>
-    </div>
+    </TodoItemBox>
   );
 };
 
@@ -53,18 +78,22 @@ const Todos: React.FC<TodosProps> = ({
 }) => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (input.trim() === '') {
+      alert('Please enter your task.');
+      return;
+    }
     onInsert(input);
     onChangeInput('');
   };
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     onChangeInput(e.target.value);
   return (
-    <div>
+    <TodosBox>
       <form onSubmit={onSubmit}>
-        <input value={input} onChange={onChange} />
+        <TodoInput value={input} onChange={onChange} />
         <button type="submit">Add</button>
       </form>
-      <TodosBox>
+      <>
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
@@ -73,8 +102,8 @@ const Todos: React.FC<TodosProps> = ({
             onRemove={onRemove}
           />
         ))}
-      </TodosBox>
-    </div>
+      </>
+    </TodosBox>
   );
 };
 
