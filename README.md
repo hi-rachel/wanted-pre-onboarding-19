@@ -43,7 +43,7 @@ Add와 Delete 기능 2 가지를 만듭니다.
 1. input 창에 list1을 입력 후 Add 버튼을 누르면 input 창 하단에 list1 컴포넌트가 뜹니다.
 2. 각 list의 delete 버튼을 누르면 해당 list 컴포넌트가 삭제됩니다.
 
-<img src="./todoListAssignment.png" width="500" >
+<img src="./public/todoListAssignment.png" width="500" >
 
 - 디자인은 자유롭게 해도 됩니다. 위의 2가지 버튼과 그에 따른 기능이 있으면 됩니다.
 - 가능하면 컴포넌트를 만듭니다. (작은 단위라도 좋습니다.)
@@ -51,9 +51,17 @@ Add와 Delete 기능 2 가지를 만듭니다.
 
 ## 😎 과제 1 결과물
 
-- 사용 기술: Vite, React, TS, RTK, styled-components, yarn
+<img src="./public/to-do-list.png" width="500" >
 
-[🎯 사이트 바로가기](https://hi-rachel.github.io/wanted-pre-onboarding-19/)
+> 사용 기술: Vite, React, TS, RTK, styled-components, yarn
+
+### 구현 기능
+
+- 할 일 추가
+- 할 일 삭제
+- input checked
+
+[🔗 사이트 바로가기](https://hi-rachel.github.io/wanted-pre-onboarding-19/)
 
 ## 과제 2
 
